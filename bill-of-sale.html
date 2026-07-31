@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="No Bounds Auto digital AS-IS retail purchase agreement and bill of sale." />
+  <title>Bill of Sale | No Bounds Auto</title>
+  <link rel="stylesheet" href="app.css" />
+  </head>
+<body>
+  <header class="site-header no-print">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="No Bounds Auto home">
+        <span class="brand-mark">NBA</span>
+        <span class="brand-text">NO BOUNDS AUTO</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#vehicles">Vehicles</a>
+        <a class="active" href="bill-of-sale.html">Bill of Sale</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero no-print">
+      <div class="container">
+        <p class="eyebrow">NO BOUNDS AUTO • DEALER WORKSPACE</p>
+        <h1>Digital AS-IS Bill of Sale</h1>
+        <p>Enter the vehicle and customer information, save a local draft, and print a completed agreement. Signatures and initials remain handwritten.</p>
+      </div>
+    </section>
+
+    <section class="toolbar no-print" aria-label="Form controls">
+      <div class="container toolbar-inner">
+        <div class="toolbar-group">
+          <button type="button" class="btn btn-primary" id="saveDraft">Save Draft</button>
+          <button type="button" class="btn" id="loadDraft">Load Draft</button>
+          <button type="button" class="btn" id="newForm">New / Clear</button>
+        </div>
+        <div class="toolbar-group">
+          <button type="button" class="btn btn-primary" id="printForm">Print Agreement</button>
+        </div>
+        <p class="save-status" id="saveStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <form id="billOfSaleForm" autocomplete="off">
+      <article class="document" id="printDocument">
+        <header class="document-header">
+          <div>
+            <h2>NO BOUNDS AUTO</h2>
+            <p>RETAIL PURCHASE AGREEMENT AND BILL OF SALE</p>
+          </div>
+          <div class="dealer-meta">
+            <label>Dealer Address
+              <input name="dealerAddress" value="12225 Highway 365 S, Little Rock, AR" />
+            </label>
+            <label>Arkansas Dealer License No.
+              <input name="dealerLicense" />
+            </label>
+            <label>Phone
+              <input name="dealerPhone" value="501-272-9414" />
+            </label>
+          </div>
+        </header>
+
+        <section class="grid four compact">
+          <label>Contract No.<input name="contractNumber" /></label>
+          <label>Sale Date<input type="date" name="saleDate" /></label>
+          <label>Stock No.<input name="stockNumber" /></label>
+          <label>Delivery Date / Time<input type="datetime-local" name="deliveryDateTime" /></label>
+        </section>
+
+        <section>
+          <h3>1. BUYER INFORMATION</h3>
+          <div class="grid two">
+            <label>Buyer Full Legal Name<input name="buyerName" required /></label>
+            <label>Co-Buyer<input name="coBuyerName" /></label>
+            <label>Street Address<input name="buyerAddress" /></label>
+            <label>City / State / ZIP<input name="buyerCityStateZip" /></label>
+            <label>Driver License No. / State<input name="buyerLicense" /></label>
+            <label>Phone / Email<input name="buyerContact" /></label>
+          </div>
+        </section>
+
+        <section>
+          <h3>2. VEHICLE INFORMATION</h3>
+          <div class="grid four">
+            <label>Year<input name="vehicleYear" inputmode="numeric" maxlength="4" /></label>
+            <label>Make<input name="vehicleMake" /></label>
+            <label>Model / Trim<input name="vehicleModel" /></label>
+            <label>Color<input name="vehicleColor" /></label>
+          </div>
+          <div class="grid two">
+            <label>Vehicle Identification Number (VIN)<input name="vin" id="vin" maxlength="17" /></label>
+            <label>License Plate<input name="licensePlate" /></label>
+          </div>
+          <div class="grid four">
+            <label>Odometer Reading<input name="odometer" inputmode="numeric" /></label>
+            <label>Odometer Status
+              <select name="odometerStatus">
+                <option value="Actual Mileage">Actual Mileage</option>
+                <option value="Exceeds Mechanical Limits">Exceeds Mechanical Limits</option>
+                <option value="Not Actual - WARNING">Not Actual - WARNING</option>
+              </select>
+            </label>
+            <label>Title State<input name="titleState" value="AR" maxlength="2" /></label>
+            <label>Title No.<input name="titleNumber" /></label>
+          </div>
+          <div class="grid two">
+            <label>Title Status
+              <select name="titleStatus">
+                <option value="Clean">Clean</option>
+                <option value="Salvage">Salvage</option>
+                <option value="Rebuilt">Rebuilt</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>Other Title Description<input name="otherTitleDescription" /></label>
+          </div>
+          <p class="notice"><strong>ODOMETER NOTICE:</strong> The parties must also complete all odometer disclosure information required on the title and, when applicable, the official Arkansas Vehicle Bill of Sale/Odometer Disclosure Statement.</p>
+        </section>
+
+        <section>
+          <h3>3. PURCHASE PRICE AND PAYMENT</h3>
+          <div class="money-table">
+            <label>Cash Selling Price<span>$</span><input class="money" name="cashPrice" value="0.00" /></label>
+            <label>Sales / Use Tax Collected by Dealer<span>$</span><input class="money" name="taxCollected" value="0.00" /></label>
+            <label>Trade-In Allowance<span>$</span><input class="money" name="tradeAllowance" value="0.00" /></label>
+            <label>Service / Handling Fee<span>$</span><input class="money" name="serviceFee" value="0.00" /></label>
+            <label>Trade-In Payoff<span>$</span><input class="money" name="tradePayoff" value="0.00" /></label>
+            <label>Title / Registration / Government Fees<span>$</span><input class="money" name="governmentFees" value="0.00" /></label>
+            <label>Down Payment / Deposit<span>$</span><input class="money" name="downPayment" value="0.00" /></label>
+            <label>Other Itemized Charge<span>$</span><input class="money" name="otherCharge" value="0.00" /></label>
+            <label>Unpaid Balance / Amount Financed<span>$</span><input class="money calculated" name="unpaidBalance" readonly /></label>
+            <label class="total">TOTAL PURCHASE PRICE<span>$</span><input class="money calculated" name="totalPurchasePrice" readonly /></label>
+          </div>
+          <div class="grid two">
+            <label>Payment Method
+              <select name="paymentMethod">
+                <option>Cash</option>
+                <option>Certified Funds</option>
+                <option>Card</option>
+                <option>Third-Party Financing</option>
+                <option>Dealer Financing</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>Receipt / Reference No.<input name="receiptNumber" /></label>
+          </div>
+        </section>
+
+        <section>
+          <h3>4. TRADE-IN INFORMATION (IF APPLICABLE)</h3>
+          <div class="grid three">
+            <label>Year / Make / Model<input name="tradeVehicle" /></label>
+            <label>VIN<input name="tradeVin" maxlength="17" /></label>
+            <label>Odometer<input name="tradeOdometer" /></label>
+            <label>Title State / No.<input name="tradeTitle" /></label>
+            <label>Lienholder<input name="tradeLienholder" /></label>
+            <label>Payoff Good Through<input type="date" name="tradePayoffDate" /></label>
+          </div>
+          <p class="notice">Buyer represents that the trade-in is owned by Buyer, is free of undisclosed liens, and has not suffered undisclosed flood, frame, salvage, rebuilt, fire, or major structural damage. Buyer authorizes Dealer to verify title and payoff information.</p>
+        </section>
+
+        <div class="page-break"></div>
+
+        <section>
+          <h3 class="center">IMPORTANT SALE TERMS AND BUYER ACKNOWLEDGMENTS</h3>
+          <ol class="terms">
+            <li><strong>COMPLETE AGREEMENT.</strong> This written agreement, the final Buyers Guide, title documents, financing documents, and any signed Due Bill/We Owe form contain the complete agreement. No oral promise is binding unless written and signed by both parties. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>BUYERS GUIDE CONTROLS.</strong> Buyer acknowledges receiving the original or a copy of the final FTC Buyers Guide at the time of sale. The information on the Buyers Guide is part of this contract and overrides contrary warranty language. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>AS IS – NO DEALER WARRANTY.</strong> The vehicle is sold AS IS – NO DEALER WARRANTY, WITH ALL FAULTS. No Bounds Auto does not provide or offer any express or implied warranty. To the fullest extent permitted by law, Dealer disclaims implied warranties of merchantability and fitness for a particular purpose. Buyer accepts responsibility for all repairs, parts, labor, towing, diagnosis, maintenance, and other costs after delivery. This clause does not waive rights that cannot legally be waived. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>INSPECTION AND CONDITION.</strong> Buyer has inspected and test-driven the vehicle, or voluntarily declined the opportunity, and was advised that an independent inspection may be obtained before purchase. Buyer is not relying on Dealer to identify every present or future mechanical, electrical, cosmetic, structural, safety, emissions, or recall condition. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>VEHICLE HISTORY AND PRIOR USE.</strong> Used vehicles may have prior repairs, accidents, paintwork, commercial, repossession, rental, fleet, or other use. Dealer discloses information actually known and required by law. Buyer acknowledges the opportunity to obtain a vehicle history report and check recalls. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>TITLE STATUS AND BRANDED TITLE.</strong> The stated title status is based on records available to Dealer. A salvage, rebuilt, or other branded-title vehicle requires the separate Arkansas notification and acknowledgment form. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>ODOMETER DISCLOSURE.</strong> Buyer and Seller certify the odometer disclosure in the title documents and any official odometer form. Altering, concealing, or knowingly misstating mileage is prohibited. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>DELIVERY AND RISK OF LOSS.</strong> Buyer accepts delivery when Buyer or an authorized person receives the vehicle or keys. From delivery, Buyer is responsible for insurance, towing, storage, operation, tickets, taxes, registration, damage, and loss except where law provides otherwise. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>PAYMENT AND OWNERSHIP.</strong> Ownership and title transfer are conditioned on final payment and completion of required documents. Returned, reversed, fraudulent, or dishonored funds constitute nonpayment. Dealer retains lawful remedies until paid in full. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>REGISTRATION, TAXES, AND INSURANCE.</strong> Buyer is responsible for timely titling, registration, taxes and fees not collected by Dealer, and legally required insurance. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>NO RETURN OR COOLING-OFF PERIOD.</strong> Unless a separate written return policy is signed by Dealer or law requires otherwise, the sale is final after signing and delivery. There is no general three-day cancellation right for an ordinary dealership vehicle sale. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>BUYER INFORMATION.</strong> Buyer certifies all identification, address, insurance, financing, and trade-in information is true and authorizes reasonable verification. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>NON-WAIVABLE RIGHTS.</strong> Nothing limits liability for fraud, intentional misrepresentation, odometer violations, title violations, or rights that cannot legally be waived. If one provision is unenforceable, the remainder remains effective. <span class="initial-line">Buyer Initials: ______</span></li>
+            <li><strong>GOVERNING LAW.</strong> Arkansas law governs this transaction. Any lawsuit shall be brought in a court with lawful jurisdiction and proper venue.</li>
+          </ol>
+        </section>
+
+        <section class="as-is-box">
+          <h3>5. AS IS – NO DEALER WARRANTY</h3>
+          <p><strong>NO BOUNDS AUTO SELLS THIS VEHICLE AS IS – NO DEALER WARRANTY.</strong></p>
+          <p>No warranty or service contract is provided by No Bounds Auto. Buyer accepts the vehicle in its present condition, with all known and unknown faults, and assumes responsibility for repairs and maintenance after delivery, subject only to rights that cannot be waived by law.</p>
+          <p class="initial-center"><strong>Buyer Initials: ________ &nbsp;&nbsp;&nbsp; Seller Initials: ________</strong></p>
+        </section>
+
+        <section>
+          <h3>6. DOCUMENTS DELIVERED / RECEIVED</h3>
+          <div class="check-grid">
+            <label><input type="checkbox" name="docBuyersGuide" /> Final Buyers Guide</label>
+            <label><input type="checkbox" name="docBillOfSale" /> Bill of Sale</label>
+            <label><input type="checkbox" name="docTitle" /> Title / Assignment</label>
+            <label><input type="checkbox" name="docOdometer" /> Odometer Disclosure</label>
+            <label><input type="checkbox" name="docTempTag" /> Temporary Tag Documents</label>
+            <label><input type="checkbox" name="docFinance" /> Finance Contract</label>
+            <label><input type="checkbox" name="docBrandedTitle" /> Branded-Title Notification</label>
+            <label><input type="checkbox" name="docDueBill" /> Due Bill / We Owe</label>
+          </div>
+        </section>
+
+        <section class="acknowledgment">
+          <h3>CUSTOMER ACKNOWLEDGMENT</h3>
+          <p>BY SIGNING BELOW, BUYER STATES THAT BUYER HAS READ THIS ENTIRE AGREEMENT, RECEIVED A COMPLETED COPY, UNDERSTANDS THAT THE VEHICLE IS SOLD AS IS – NO DEALER WARRANTY, AND VOLUNTARILY ACCEPTS THE VEHICLE AND THESE TERMS.</p>
+        </section>
+
+        <section>
+          <h3>7. SIGNATURES</h3>
+          <div class="signature-grid">
+            <div><span>Buyer Signature</span><div class="signature-line"></div></div>
+            <div><span>Date / Time</span><div class="signature-line"></div></div>
+            <div><span>Printed Name</span><input name="buyerPrintedName" /></div>
+            <div><span>Driver License No.</span><input name="signatureBuyerLicense" /></div>
+            <div><span>Co-Buyer Signature</span><div class="signature-line"></div></div>
+            <div><span>Date / Time</span><div class="signature-line"></div></div>
+            <div><span>Seller / Dealer Representative Signature</span><div class="signature-line"></div></div>
+            <div><span>Date / Time</span><div class="signature-line"></div></div>
+            <div><span>Seller Printed Name / Title</span><input name="sellerPrintedName" /></div>
+            <div><span>Dealer License No.</span><input name="signatureDealerLicense" /></div>
+          </div>
+          <p class="copy-ack"><strong>Buyer received a completed copy at signing:</strong> Buyer Initials ______ &nbsp;&nbsp; Seller Initials ______</p>
+        </section>
+
+        <footer class="document-footer">
+          Use this agreement with official Arkansas title/odometer documents, the FTC Buyers Guide, and any required branded-title notification.
+        </footer>
+      </article>
+    </form>
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="container">© <span id="year"></span> No Bounds Auto. Internal dealer form.</div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
