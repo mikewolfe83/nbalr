@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="No Bounds Auto vehicle sale and profit calculator.">
+  <title>Vehicle Profit Calculator | No Bounds Auto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profit-calculator.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html">
+        <span class="brand-no">NO</span>
+        <span class="brand-bounds">BOUNDS</span>
+        <span class="brand-auto">AUTO</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#vehicles">Vehicles</a>
+        <a class="active" href="bill-of-sale.html">Bill Of Sale</a>
+        <a class="active" href="profit-calculator.html">Calculator</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="container">
+      <p class="eyebrow">No Bounds Auto Business Tool</p>
+      <h1>Vehicle Profit Calculator</h1>
+      <p class="intro">
+        Estimate the minimum selling price, Arkansas vehicle sales tax, federal and Arkansas
+        income-tax reserves, and your expected profit after taxes.
+      </p>
+
+      <div class="app-grid">
+        <form class="panel input-panel" id="calculatorForm">
+          <div class="panel-title-row">
+            <h2>Vehicle Information</h2>
+            <button class="text-button" id="resetButton" type="button">Reset</button>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Price Car Was Bought For</span>
+              <div class="input-box">
+                <b>$</b>
+                <input id="purchasePrice" type="number" min="0" step="0.01" value="1000">
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Repair Expenses</span>
+              <div class="input-box">
+                <b>$</b>
+                <input id="repairExpenses" type="number" min="0" step="0.01" value="500">
+              </div>
+            </label>
+
+            <label class="field full">
+              <span>Desired Profit Before Income Taxes</span>
+              <div class="input-box">
+                <b>$</b>
+                <input id="desiredProfit" type="number" min="0" step="0.01" value="1500">
+              </div>
+            </label>
+          </div>
+
+          <div class="section-divider">
+            <h2>Income-Tax Estimates</h2>
+            <p>These editable rates are applied to the estimated business profit.</p>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Federal Income-Tax Rate</span>
+              <div class="input-box percent">
+                <input id="federalRate" type="number" min="0" max="100" step="0.1" value="22">
+                <b>%</b>
+              </div>
+            </label>
+
+            <label class="field">
+              <span>Arkansas Income-Tax Rate</span>
+              <div class="input-box percent">
+                <input id="arkansasRate" type="number" min="0" max="100" step="0.1" value="3.9">
+                <b>%</b>
+              </div>
+            </label>
+          </div>
+
+          <label class="check-row">
+            <input id="includeSelfEmployment" type="checkbox">
+            <span>
+              Include estimated self-employment tax
+              <small>Estimated at 15.3% of 92.35% of profit.</small>
+            </span>
+          </label>
+
+          <div class="section-divider">
+            <h2>Arkansas Vehicle Sales Tax</h2>
+            <p>The state rate changes according to the vehicle selling price.</p>
+          </div>
+
+          <label class="field">
+            <span>Local City/County Tax Rate</span>
+            <div class="input-box percent">
+              <input id="localSalesTaxRate" type="number" min="0" max="20" step="0.01" value="0">
+              <b>%</b>
+            </div>
+            <small class="helper">Enter the applicable local rate, or leave it at 0%.</small>
+          </label>
+        </form>
+
+        <aside class="panel result-panel" aria-live="polite">
+          <p class="result-label">Minimum Vehicle Selling Price</p>
+          <div class="main-price" id="sellingPrice">$3,000.00</div>
+
+          <div class="result-list">
+            <div><span>Purchase Price</span><strong id="purchaseOutput">$1,000.00</strong></div>
+            <div><span>Repair Expenses</span><strong id="repairsOutput">$500.00</strong></div>
+            <div><span>Total Investment</span><strong id="investmentOutput">$1,500.00</strong></div>
+            <div><span>Desired Profit Before Tax</span><strong id="profitBeforeTax">$1,500.00</strong></div>
+          </div>
+
+          <h3>Buyer Sales-Tax Estimate</h3>
+          <div class="result-list compact">
+            <div><span>Arkansas State Vehicle Tax</span><strong id="stateSalesTax">$0.00</strong></div>
+            <div><span>Local Vehicle Tax</span><strong id="localSalesTax">$0.00</strong></div>
+            <div class="emphasis"><span>Total Buyer Sales Tax</span><strong id="totalSalesTax">$0.00</strong></div>
+            <div><span>Estimated Buyer Total</span><strong id="buyerTotal">$3,000.00</strong></div>
+          </div>
+
+          <h3>Business Income-Tax Estimate</h3>
+          <div class="result-list compact">
+            <div><span>Federal Income Tax</span><strong id="federalTax">$330.00</strong></div>
+            <div><span>Arkansas Income Tax</span><strong id="arkansasTax">$58.50</strong></div>
+            <div id="selfEmploymentRow" hidden><span>Self-Employment Tax</span><strong id="selfEmploymentTax">$0.00</strong></div>
+            <div class="emphasis red"><span>Total Estimated Income Taxes</span><strong id="totalIncomeTax">$388.50</strong></div>
+          </div>
+
+          <div class="profit-card">
+            <span>Estimated Profit After Taxes</span>
+            <strong id="profitAfterTax">$1,111.50</strong>
+          </div>
+
+          <div class="margin-row">
+            <div><span>Pre-Tax Margin</span><strong id="preTaxMargin">50.0%</strong></div>
+            <div><span>After-Tax Margin</span><strong id="afterTaxMargin">37.1%</strong></div>
+          </div>
+
+          <button class="primary-button" type="button" id="printButton">Print Calculation</button>
+        </aside>
+      </div>
+
+      <section class="notice">
+        <h2>Important Tax Note</h2>
+        <p>
+          Arkansas vehicle sales tax is shown as a buyer-side estimate and is not deducted from dealership profit.
+          Federal and Arkansas income taxes depend on your business structure, total annual taxable income,
+          deductions, and filing status. Use this tool for planning only and confirm final amounts with Arkansas DFA,
+          the IRS, and a qualified tax professional.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <span>© <span id="year"></span> No Bounds Auto</span>
+      <span>Quality Cars. Cash Prices.</span>
+    </div>
+  </footer>
+
+  <script src="profit-calculator.js"></script>
+</body>
+</html>
