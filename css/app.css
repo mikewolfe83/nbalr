@@ -1,0 +1,375 @@
+:root {
+  --black: #080808;
+  --panel: #121212;
+  --gold: #c9a227;
+  --gold-light: #f0d36a;
+  --white: #ffffff;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #6b6b6b;
+  --line: #262626;
+  --soft: #f1f1f1;
+  --danger: #8b0000;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(circle at top right, rgba(201,162,39,.13), transparent 28rem),
+    var(--black);
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(8,8,8,.96);
+  border-bottom: 1px solid rgba(201,162,39,.35);
+  backdrop-filter: blur(12px);
+}
+
+.nav-wrap {
+  min-height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--gold);
+  color: var(--gold-light);
+  display: grid;
+  place-items: center;
+  font-size: .78rem;
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 22px; }
+nav a { color: #ddd; text-decoration: none; font-weight: 700; font-size: .93rem; }
+nav a:hover, nav a.active { color: var(--gold-light); }
+
+.hero {
+  padding: 64px 0 32px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.eyebrow {
+  color: var(--gold-light);
+  letter-spacing: .18em;
+  font-weight: 800;
+  font-size: .78rem;
+}
+
+.hero h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.hero p {
+  max-width: 760px;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+.toolbar {
+  position: sticky;
+  top: 72px;
+  z-index: 15;
+  background: #101010;
+  border-bottom: 1px solid rgba(201,162,39,.25);
+  padding: 12px 0;
+}
+
+.toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.toolbar-group { display: flex; gap: 9px; flex-wrap: wrap; }
+
+.btn {
+  border: 1px solid #444;
+  background: #1b1b1b;
+  color: white;
+  border-radius: 7px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.btn:hover { border-color: var(--gold); }
+.btn-primary { background: var(--gold); color: #050505; border-color: var(--gold); }
+
+.save-status { min-height: 1.2em; margin: 0; color: var(--gold-light); font-size: .9rem; }
+
+.document {
+  width: min(1000px, calc(100% - 24px));
+  margin: 34px auto;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 34px;
+  box-shadow: 0 25px 70px rgba(0,0,0,.5);
+}
+
+.document-header {
+  border: 2px solid #111;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: stretch;
+}
+
+.document-header > div { padding: 16px; }
+.document-header > div:first-child {
+  background: #111;
+  color: white;
+  display: grid;
+  align-content: center;
+  text-align: center;
+}
+
+.document-header h2 { margin: 0; font-size: 1.55rem; letter-spacing: .06em; }
+.document-header p { margin: 4px 0 0; font-weight: 800; font-size: .8rem; }
+
+.dealer-meta {
+  display: grid;
+  gap: 8px;
+  border-left: 2px solid #111;
+}
+
+section { margin-top: 18px; }
+
+h3 {
+  font-size: .88rem;
+  letter-spacing: .04em;
+  margin: 0 0 8px;
+  padding: 7px 9px;
+  background: #111;
+  color: #fff;
+}
+
+h3.center { text-align: center; }
+
+.grid {
+  display: grid;
+  border: 1px solid #111;
+  border-bottom: 0;
+  border-right: 0;
+}
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid.compact { margin-top: 14px; }
+
+label {
+  font-weight: 700;
+  font-size: .72rem;
+}
+
+.grid > label, .dealer-meta label {
+  padding: 7px;
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.dealer-meta label { border: 0; padding: 0; }
+
+input, select, textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #555;
+  background: transparent;
+  color: #111;
+  padding: 7px 3px 4px;
+  font: inherit;
+  font-size: .88rem;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 var(--gold);
+}
+
+.notice {
+  border: 1px solid #111;
+  margin: 0;
+  padding: 8px;
+  font-size: .72rem;
+  line-height: 1.4;
+}
+
+.money-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #111;
+  border-bottom: 0;
+}
+
+.money-table label {
+  display: grid;
+  grid-template-columns: 1fr 18px 130px;
+  align-items: center;
+  min-height: 39px;
+  border-bottom: 1px solid #111;
+  padding-left: 8px;
+}
+
+.money-table label:nth-child(odd) { border-right: 1px solid #111; }
+.money-table input { text-align: right; padding-right: 8px; }
+.money-table .total { background: #eee; font-weight: 900; }
+.calculated { font-weight: 900; }
+
+.terms {
+  margin: 0;
+  padding-left: 22px;
+  font-size: .7rem;
+  line-height: 1.35;
+}
+.terms li { margin-bottom: 6px; }
+.initial-line { white-space: nowrap; font-weight: 800; }
+
+.as-is-box {
+  border: 3px solid #111;
+  padding: 11px;
+}
+.as-is-box h3 { margin: -11px -11px 10px; text-align: center; }
+.as-is-box p { font-size: .78rem; line-height: 1.45; margin: 7px 0; }
+.initial-center { text-align: center; }
+
+.check-grid {
+  border: 1px solid #111;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.check-grid label {
+  padding: 8px;
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.check-grid input { width: auto; }
+
+.acknowledgment {
+  border: 3px solid #111;
+  background: #eee;
+}
+.acknowledgment h3 { text-align: center; margin: 0; }
+.acknowledgment p {
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+  font-size: .77rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid #111;
+}
+.signature-grid > div {
+  min-height: 58px;
+  padding: 7px;
+  border-right: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+.signature-grid span {
+  display: block;
+  font-size: .7rem;
+  font-weight: 800;
+}
+.signature-line { margin-top: 27px; border-bottom: 1px solid #111; }
+
+.copy-ack { text-align: center; font-size: .75rem; }
+.document-footer {
+  text-align: center;
+  font-size: .65rem;
+  color: #555;
+  border-top: 1px solid #aaa;
+  padding-top: 8px;
+  margin-top: 14px;
+}
+
+.site-footer {
+  border-top: 1px solid rgba(201,162,39,.25);
+  padding: 28px 0;
+  color: #aaa;
+  text-align: center;
+}
+
+.page-break { display: none; }
+
+@media (max-width: 800px) {
+  .nav-wrap { align-items: flex-start; padding: 14px 0; flex-direction: column; }
+  .toolbar { top: 106px; }
+  .document { padding: 18px; }
+  .document-header { grid-template-columns: 1fr; }
+  .dealer-meta { border-left: 0; border-top: 2px solid #111; }
+  .grid.four, .grid.three, .grid.two, .money-table, .signature-grid, .check-grid { grid-template-columns: 1fr; }
+  .money-table label:nth-child(odd) { border-right: 0; }
+}
+
+@page {
+  size: letter;
+  margin: .35in;
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .no-print { display: none !important; }
+  .document {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    font-size: 9pt;
+  }
+  .document-header { break-inside: avoid; }
+  section { margin-top: 10px; }
+  h3 { padding: 4px 6px; font-size: 8.5pt; }
+  input, select {
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 8.5pt;
+    padding: 3px 2px 2px;
+    border-bottom: 1px solid #111;
+  }
+  .grid > label { padding: 4px; }
+  .notice, .terms, .as-is-box p, .acknowledgment p { font-size: 7.5pt; }
+  .terms li { margin-bottom: 4px; }
+  .money-table label { min-height: 29px; grid-template-columns: 1fr 14px 100px; }
+  .signature-grid > div { min-height: 48px; }
+  .signature-line { margin-top: 22px; }
+  .page-break { display: block; break-before: page; }
+  .as-is-box, .acknowledgment, .signature-grid, .check-grid { break-inside: avoid; }
+}

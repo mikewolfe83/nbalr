@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="No Bounds Auto dealer inventory upload tool.">
+  <title>Vehicle Upload | No Bounds Auto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/vehicle-upload.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="js/auth.js" defer></script>
+</head>
+<body class="auth-locked">
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-no">NO</span>
+        <span class="brand-bounds">BOUNDS</span>
+        <span class="brand-auto">AUTO</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#vehicles">Vehicles</a>
+        <a href="bill-of-sale.html">Bill Of Sale</a>
+        <a href="profit-calculator.html">Calculator</a>
+        <a class="active" href="vehicle-upload.html">Vehicle Upload</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="admin-shell">
+    <section class="container">
+      <p class="eyebrow">No Bounds Auto Dealer Workspace</p>
+      <h1>Vehicle Inventory Manager</h1>
+      <p class="admin-intro">
+        Add a vehicle photo, price, and description, preview your current working inventory,
+        then download an updated <strong>vehicles.json</strong> file for the website.
+      </p>
+
+      <div class="admin-grid">
+        <form class="admin-panel" id="vehicleUploadForm">
+          <h2>Add Vehicle</h2>
+
+          <div class="admin-form-grid">
+            <label class="admin-field">
+              <span>Year</span>
+              <input name="year" inputmode="numeric" maxlength="4" placeholder="2008">
+            </label>
+
+            <label class="admin-field">
+              <span>Make</span>
+              <input name="make" placeholder="Lexus">
+            </label>
+
+            <label class="admin-field">
+              <span>Model / Trim</span>
+              <input name="model" placeholder="LS 460">
+            </label>
+
+            <label class="admin-field">
+              <span>Price</span>
+              <input name="price" type="number" min="0" step="1" required placeholder="4500">
+            </label>
+
+            <label class="admin-field">
+              <span>Mileage</span>
+              <input name="mileage" type="number" min="0" step="1" placeholder="180000">
+            </label>
+
+            <label class="admin-field">
+              <span>Stock Number</span>
+              <input name="stockNumber" placeholder="NBA-001">
+            </label>
+
+            <label class="admin-field full">
+              <span>Status</span>
+              <select name="status">
+                <option>Available</option>
+                <option>Sale Pending</option>
+                <option>Sold</option>
+                <option>Coming Soon</option>
+              </select>
+            </label>
+
+            <label class="admin-field full">
+              <span>Description</span>
+              <textarea name="description" placeholder="Runs and drives, cold air, clean title, fair interior..."></textarea>
+            </label>
+
+            <label class="admin-field full">
+              <span>Vehicle Picture</span>
+              <input id="vehicleImage" type="file" accept="image/*">
+              <div class="image-preview" id="imagePreview">
+                <span>Vehicle image preview</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="submit">Add Vehicle</button>
+            <button class="btn" type="reset">Clear Form</button>
+          </div>
+        </form>
+
+        <section class="admin-panel">
+          <h2>Working Inventory</h2>
+          <div class="admin-list" id="adminVehicleList"></div>
+
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="button" id="exportVehicles">Download vehicles.json</button>
+            <button class="btn" type="button" id="reloadInventory">Reload Live File</button>
+            <button class="btn" type="button" id="clearWorkingList">Clear Working List</button>
+          </div>
+
+          <p class="save-status" id="adminStatus" role="status" aria-live="polite"></p>
+
+          <div class="admin-note">
+            <strong>Posting workflow:</strong> after adding or removing vehicles, click
+            <em>Download vehicles.json</em>. In GitHub, replace the file at
+            <code>data/vehicles.json</code> with the downloaded file and commit the change.
+            The homepage will automatically render the newest 9 vehicles.
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> No Bounds Auto.</p>
+      <p>Dealer Inventory Workspace</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/vehicle-upload.js"></script>
+</body>
+</html>
