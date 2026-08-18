@@ -373,3 +373,17 @@ input:focus, select:focus {
   .page-break { display: block; break-before: page; }
   .as-is-box, .acknowledgment, .signature-grid, .check-grid { break-inside: avoid; }
 }
+
+
+/* PDF generation workflow */
+.pdf-help {
+  padding: 10px 0;
+  background: rgba(201,162,39,.08);
+  border-bottom: 1px solid rgba(201,162,39,.2);
+  color: #ddd;
+  font-size: .88rem;
+}
+.pdf-help strong { color: var(--gold-light); }
+.pdf-initials-panel { border: 1px dashed #999; padding: 10px; background: #fafafa; }
+.pdf-initials-panel h3 { margin: -10px -10px 10px; }
+.btn.is-working { opacity: .7; cursor: wait; }

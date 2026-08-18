@@ -33,7 +33,7 @@
       <div class="container">
         <p class="eyebrow">NO BOUNDS AUTO • DEALER WORKSPACE</p>
         <h1>Digital AS-IS Bill of Sale</h1>
-        <p>Enter the vehicle and customer information, save a local draft, and print a completed agreement. Signatures and initials remain handwritten.</p>
+        <p>Enter the vehicle and customer information, save a local draft, and generate a clean two-page PDF from the official No Bounds Auto agreement. Signatures remain handwritten.</p>
       </div>
     </section>
 
@@ -45,9 +45,15 @@
           <button type="button" class="btn" id="newForm">New / Clear</button>
         </div>
         <div class="toolbar-group">
-          <button type="button" class="btn btn-primary" id="printForm">Print Agreement</button>
+          <button type="button" class="btn btn-primary" id="generatePdf">Generate / Print PDF</button>
         </div>
         <p class="save-status" id="saveStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="pdf-help no-print">
+      <div class="container">
+        <strong>PDF workflow:</strong> Fill out the form, click <em>Generate / Print PDF</em>, then print the clean PDF that opens in a new tab. The webpage itself is not printed.
       </div>
     </section>
 
@@ -130,19 +136,21 @@
 
         <section>
           <h3>3. PURCHASE PRICE AND PAYMENT</h3>
+          <p class="notice negotiation-note"><strong>NEGOTIATION NOTE:</strong> Dollar fields may be left blank or entered as N/A until final sale terms are agreed upon. Enter the final amounts before the agreement is signed.</p>
           <div class="money-table">
-            <label>Cash Selling Price<span>$</span><input class="money" name="cashPrice" value="0.00" /></label>
-            <label>Sales / Use Tax Collected by Dealer<span>$</span><input class="money" name="taxCollected" value="0.00" /></label>
-            <label>Trade-In Allowance<span>$</span><input class="money" name="tradeAllowance" value="0.00" /></label>
-            <label>Service / Handling Fee<span>$</span><input class="money" name="serviceFee" value="0.00" /></label>
-            <label>Trade-In Payoff<span>$</span><input class="money" name="tradePayoff" value="0.00" /></label>
-            <label>Title / Registration / Government Fees<span>$</span><input class="money" name="governmentFees" value="0.00" /></label>
-            <label>Down Payment / Deposit<span>$</span><input class="money" name="downPayment" value="0.00" /></label>
-            <label>Other Itemized Charge<span>$</span><input class="money" name="otherCharge" value="0.00" /></label>
+            <label>Cash Selling Price<span>$</span><input class="money" name="cashPrice" value="" placeholder="Blank or N/A" /></label>
+            <label>Sales / Use Tax Collected by Dealer<span>$</span><input class="money" name="taxCollected" value="" placeholder="Blank or N/A" /></label>
+            <label>Trade-In Allowance<span>$</span><input class="money" name="tradeAllowance" value="" placeholder="Blank or N/A" /></label>
+            <label>Service / Handling Fee<span>$</span><input class="money" name="serviceFee" value="" placeholder="Blank or N/A" /></label>
+            <label>Trade-In Payoff<span>$</span><input class="money" name="tradePayoff" value="" placeholder="Blank or N/A" /></label>
+            <label>Title / Registration / Government Fees<span>$</span><input class="money" name="governmentFees" value="" placeholder="Blank or N/A" /></label>
+            <label>Down Payment / Deposit<span>$</span><input class="money" name="downPayment" value="" placeholder="Blank or N/A" /></label>
+            <label>Other Itemized Charge<span>$</span><input class="money" name="otherCharge" value="" placeholder="Blank or N/A" /></label>
             <label>Unpaid Balance / Amount Financed<span>$</span><input class="money calculated" name="unpaidBalance" readonly /></label>
             <label class="total">TOTAL PURCHASE PRICE<span>$</span><input class="money calculated" name="totalPurchasePrice" readonly /></label>
           </div>
           <div class="grid two">
+            <label>Other Itemized Charge Description<input name="otherChargeDescription" placeholder="Optional description" /></label>
             <label>Payment Method
               <select name="paymentMethod">
                 <option>Cash</option>
@@ -199,6 +207,15 @@
           <p class="initial-center"><strong>Buyer Initials: ________ &nbsp;&nbsp;&nbsp; Seller Initials: ________</strong></p>
         </section>
 
+        <section class="pdf-initials-panel no-print">
+          <h3>PDF INITIALS</h3>
+          <div class="grid two">
+            <label>Buyer Initials<input name="buyerInitials" maxlength="5" placeholder="e.g. MG" /></label>
+            <label>Seller Initials<input name="sellerInitials" maxlength="5" placeholder="e.g. MG" /></label>
+          </div>
+          <p class="notice">When entered, Buyer Initials are placed on the acknowledgment lines in the generated PDF. Signature lines remain blank for handwritten signatures.</p>
+        </section>
+
         <section>
           <h3>6. DOCUMENTS DELIVERED / RECEIVED</h3>
           <div class="check-grid">
@@ -247,6 +264,7 @@
     
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/script.js"></script>
 </body>
