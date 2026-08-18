@@ -3,7 +3,7 @@
   const status = document.getElementById("saveStatus");
   const generateButton = document.getElementById("generatePdf");
   const storageKey = "noBoundsAutoBillOfSaleDraftV2";
-  const templateUrl = "nbalr/pdf/Dealer-Filled.pdf";
+  const templateUrl = "pdf/Dealer-Filled.pdf";
 
   const moneyFields = [
     "cashPrice", "taxCollected", "tradeAllowance", "serviceFee",
