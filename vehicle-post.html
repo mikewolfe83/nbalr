@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="No Bounds Auto vehicle social media post generator." />
+  <title>Vehicle Post Generator | No Bounds Auto</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/vehicle-post.css" />
+  <script src="js/auth.js" defer></script>
+</head>
+<body class="auth-locked">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="No Bounds Auto home">
+        <span class="brand-mark">NBA</span><span class="brand-text">NO BOUNDS AUTO</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/">Home</a><a href="/#about">About</a><a href="/#vehicles">Vehicles</a>
+        <a href="bill-of-sale.html">Bill of Sale</a><a href="profit-calculator.html">Calculator</a>
+        <a href="vehicle-upload.html">Vehicle Upload</a><a class="active" href="vehicle-post.html">Post Generator</a>
+        <a class="nav-call" href="tel:5012729414">Call 501-272-9414</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">NO BOUNDS AUTO • DEALER WORKSPACE</p>
+        <h1>Vehicle Post Generator</h1>
+        <p>Enter the vehicle once, then generate a Marketplace title, short Facebook post, and full vehicle listing.</p>
+      </div>
+    </section>
+
+    <section class="post-builder">
+      <div class="container">
+        <div class="post-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">VEHICLE INFORMATION</p><h2>Create Listing</h2></div>
+            <button type="button" class="btn" id="clearVehiclePost">Clear</button>
+          </div>
+
+          <div class="vehicle-form-grid">
+            <label>Year<input id="postYear" type="number" min="1900" max="2100" placeholder="2015" /></label>
+            <label>Make<input id="postMake" placeholder="Buick" /></label>
+            <label>Model<input id="postModel" placeholder="LaCrosse" /></label>
+            <label>Trim<input id="postTrim" placeholder="Leather" /></label>
+            <label>Mileage<input id="postMileage" inputmode="numeric" placeholder="160000" /></label>
+            <label>Cash Price<input id="postPrice" inputmode="decimal" placeholder="5000" /></label>
+            <label>Title Status<select id="postTitleStatus"><option>Clean Title</option><option>Rebuilt Title</option><option>Salvage Title</option><option>Other</option></select></label>
+            <label>Runs & Drives<select id="postRuns"><option>Yes</option><option>Yes - Needs Maintenance</option><option>No</option></select></label>
+            <label>A/C<select id="postAc"><option>Cold</option><option>Works</option><option>Needs Service</option><option>Unknown</option></select></label>
+            <label>Transmission<select id="postTransmission"><option>Automatic</option><option>Manual</option><option>CVT</option><option>Unknown</option></select></label>
+            <label class="span-two">Known Issue #1<input id="postIssue1" placeholder="Example: Driver window switch intermittent" /></label>
+            <label class="span-two">Known Issue #2<input id="postIssue2" placeholder="Optional" /></label>
+            <label class="span-two">Recent Repairs / Maintenance<textarea id="postRepairs" rows="3" placeholder="Example: New battery, oil change"></textarea></label>
+            <label class="span-two">Additional Notes<textarea id="postNotes" rows="3" placeholder="Anything else the buyer should know"></textarea></label>
+          </div>
+
+          <div class="builder-actions"><button type="button" class="btn btn-primary" id="generateVehiclePosts">Generate Vehicle Posts</button></div>
+        </div>
+
+        <div class="output-stack">
+          <section class="output-card">
+            <div class="output-heading"><div><p class="eyebrow">FACEBOOK MARKETPLACE</p><h2>Marketplace Title</h2></div><button type="button" class="btn copy-btn" data-copy-target="marketplaceTitle">Copy Title</button></div>
+            <textarea id="marketplaceTitle" rows="2" readonly placeholder="Marketplace title will appear here..."></textarea>
+          </section>
+
+          <section class="output-card">
+            <div class="output-heading"><div><p class="eyebrow">SHORT VERSION</p><h2>Facebook Marketplace Post</h2></div><button type="button" class="btn copy-btn" data-copy-target="shortPostOutput">Copy Short Post</button></div>
+            <textarea id="shortPostOutput" rows="17" readonly placeholder="Short Marketplace post will appear here..."></textarea>
+          </section>
+
+          <section class="output-card">
+            <div class="output-heading"><div><p class="eyebrow">FULL VERSION</p><h2>Full Vehicle Listing</h2></div><button type="button" class="btn copy-btn" data-copy-target="fullPostOutput">Copy Full Post</button></div>
+            <textarea id="fullPostOutput" rows="24" readonly placeholder="Full vehicle listing will appear here..."></textarea>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container">© <span id="postYearFooter"></span> No Bounds Auto. Internal dealer tool.</div></footer>
+  <script src="js/vehicle-post.js"></script>
+</body>
+</html>
